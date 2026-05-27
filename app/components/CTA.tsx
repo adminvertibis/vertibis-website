@@ -6,7 +6,7 @@ export default function CTA() {
           Ready to transform your practice?
         </h2>
         <p className="text-lg text-blue-100 mb-10 max-w-2xl mx-auto">
-          Join 500+ CAs who use Vertibis to deliver faster, smarter advisory to their MSME clients. Start free — no credit card required.
+          Join partners who use Vertibis to find client risks, income opportunities, and report-led advisory work.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <a
@@ -15,7 +15,7 @@ export default function CTA() {
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center gap-2 bg-white text-[#0066cc] font-semibold px-8 py-3.5 rounded-xl hover:bg-blue-50 transition-all shadow-lg"
           >
-            Get Started Free
+            Register as Partner
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
@@ -28,7 +28,7 @@ export default function CTA() {
           </a>
         </div>
         <p className="mt-6 text-blue-200 text-sm">
-          50 free reports/year · No credit card · Cancel anytime
+          Starter Rs 3,999/year · Firm Rs 7,999/year · Enterprise Rs 12,999/year
         </p>
       </div>
     </section>

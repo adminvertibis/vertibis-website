@@ -1,83 +1,70 @@
 import Link from 'next/link';
 
-const plans = [
+const partnerPlans = [
   {
-    name: 'Free',
-    price: '₹0',
-    period: 'forever',
-    description: 'Perfect for individual CAs just getting started.',
-    highlight: false,
-    features: [
-      '50 health score reports per year',
-      'Basic financial health scoring',
-      'GSTN data integration',
-      'PDF report export',
-      'Email support',
-      'Dashboard access',
-    ],
-    missing: ['Advanced analytics', 'AI advisory', 'Priority support', 'API access'],
-    cta: 'Get Started Free',
-    href: 'https://vertibis-frontend.vercel.app',
-    external: true,
-  },
-  {
-    name: 'Pro',
-    price: '₹3,999',
+    name: 'Starter Pack',
+    price: 'Rs 3,999',
     period: 'per year',
-    description: 'For growing CA firms managing multiple MSME clients.',
-    highlight: true,
-    badge: 'Most Popular',
-    features: [
-      'Unlimited health score reports',
-      'Advanced analytics & benchmarking',
-      'AI-powered advisory engine',
-      'GSTN + ITR integration',
-      'Trend tracking & alerts',
-      'Custom branded PDF reports',
-      'Priority support (< 4hr response)',
-      'Team collaboration (3 users)',
-    ],
-    missing: ['API access', 'Dedicated support'],
-    cta: 'Start Pro Trial',
-    href: 'https://vertibis-frontend.vercel.app',
-    external: true,
-  },
-  {
-    name: 'Enterprise',
-    price: 'Custom',
-    period: 'tailored pricing',
-    description: 'For large CA firms and financial institutions.',
+    description: 'For solo practitioners and small advisory practices.',
     highlight: false,
     features: [
-      'Everything in Pro',
-      'REST API access',
-      'Bulk processing & batch scoring',
-      'White-label reports',
-      'Dedicated account manager',
-      'SLA-backed support (< 1hr)',
-      'Custom integrations',
-      'Unlimited team members',
-      'SSO & enterprise security',
+      'Partner intelligence dashboard',
+      'Up to 50 MSME clients',
+      'Client consent workflow',
+      'Report credit wallet',
+      'Income opportunity view',
+      'Co-branded client reports',
     ],
-    missing: [],
+    cta: 'Register as Partner',
+    href: 'https://vertibis-frontend.vercel.app/register',
+  },
+  {
+    name: 'Firm Pack',
+    price: 'Rs 7,999',
+    period: 'per year',
+    description: 'For CA, CS, CWA, advocate, and tax consultant firms managing a larger base.',
+    highlight: true,
+    badge: 'Recommended',
+    features: [
+      'Everything in Starter',
+      'Up to 200 MSME clients',
+      'Advanced portfolio analytics',
+      'Opportunity pipeline tracking',
+      'Pitch and proposal tools',
+      'Priority partner support',
+    ],
+    cta: 'Start Firm Pack',
+    href: 'https://vertibis-frontend.vercel.app/register',
+  },
+  {
+    name: 'Enterprise Pack',
+    price: 'Rs 12,999',
+    period: 'per year',
+    description: 'For large practices and teams that want deeper operating visibility.',
+    highlight: false,
+    features: [
+      'Everything in Firm',
+      'Large client portfolio support',
+      'White-label report options',
+      'Team workflow readiness',
+      'Custom onboarding support',
+      'API-readiness for future integrations',
+    ],
     cta: 'Contact Sales',
     href: '/contact',
-    external: false,
   },
+];
+
+const reportProducts = [
+  { name: 'Quick Report', price: 'Rs 499', detail: 'For portal testing and first client conversations.' },
+  { name: 'FY Report', price: 'Rs 999 / 1,999 / 2,999', detail: 'For FY-focused issues, based on turnover band.' },
+  { name: 'Detailed Report', price: 'Rs 1,499 / 2,499 / 3,499', detail: 'The final scoring report with advisory and action plan.' },
 ];
 
 function CheckIcon() {
   return (
     <svg className="w-4 h-4 text-[#0066cc] flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
-    </svg>
-  );
-}
-
-function XIcon() {
-  return (
-    <svg className="w-4 h-4 text-gray-300 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-      <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd"/>
     </svg>
   );
 }
@@ -91,15 +78,15 @@ export default function PricingSection() {
             Pricing
           </span>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-4">
-            Simple, transparent pricing
+            Partner dashboard plans and client report pricing
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Start free, scale as you grow. No hidden fees. Cancel anytime.
+            CAs and consultants subscribe to the dashboard, then use report credits to generate MSME health reports.
           </p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8 items-start">
-          {plans.map((plan) => (
+          {partnerPlans.map((plan) => (
             <div
               key={plan.name}
               className={`relative rounded-2xl p-8 flex flex-col ${
@@ -132,8 +119,8 @@ export default function PricingSection() {
               </div>
 
               <ul className="space-y-3 mb-8 flex-1">
-                {plan.features.map((f) => (
-                  <li key={f} className="flex items-start gap-2.5 text-sm">
+                {plan.features.map((feature) => (
+                  <li key={feature} className="flex items-start gap-2.5 text-sm">
                     {plan.highlight ? (
                       <svg className="w-4 h-4 text-blue-200 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
@@ -141,18 +128,12 @@ export default function PricingSection() {
                     ) : (
                       <CheckIcon />
                     )}
-                    <span className={plan.highlight ? 'text-blue-50' : 'text-gray-700'}>{f}</span>
-                  </li>
-                ))}
-                {plan.missing.map((f) => (
-                  <li key={f} className="flex items-start gap-2.5 text-sm opacity-50">
-                    <XIcon />
-                    <span className={plan.highlight ? 'text-blue-50 line-through' : 'text-gray-400 line-through'}>{f}</span>
+                    <span className={plan.highlight ? 'text-blue-50' : 'text-gray-700'}>{feature}</span>
                   </li>
                 ))}
               </ul>
 
-              {plan.external ? (
+              {plan.href.startsWith('http') ? (
                 <a
                   href={plan.href}
                   target="_blank"
@@ -168,11 +149,7 @@ export default function PricingSection() {
               ) : (
                 <Link
                   href={plan.href}
-                  className={`text-center py-3 px-6 rounded-xl font-semibold text-sm transition-all border-2 ${
-                    plan.highlight
-                      ? 'border-white text-white hover:bg-white/10'
-                      : 'border-[#0066cc] text-[#0066cc] hover:bg-[#e6f0fa]'
-                  }`}
+                  className="text-center py-3 px-6 rounded-xl font-semibold text-sm transition-all border-2 border-[#0066cc] text-[#0066cc] hover:bg-[#e6f0fa]"
                 >
                   {plan.cta}
                 </Link>
@@ -181,9 +158,19 @@ export default function PricingSection() {
           ))}
         </div>
 
-        <p className="text-center text-sm text-gray-500 mt-10">
-          All plans include a 14-day money-back guarantee. GST extra for Indian customers.
-        </p>
+        <div className="mt-16 bg-gray-50 rounded-2xl border border-gray-100 p-6">
+          <h3 className="text-xl font-extrabold text-gray-900 mb-4">Client MSME health report pricing</h3>
+          <div className="grid md:grid-cols-3 gap-4">
+            {reportProducts.map((product) => (
+              <div key={product.name} className="bg-white rounded-xl border border-gray-100 p-5">
+                <div className="text-sm font-semibold text-[#0066cc] mb-2">{product.name}</div>
+                <div className="text-2xl font-extrabold text-gray-900 mb-2">{product.price}</div>
+                <p className="text-sm text-gray-600">{product.detail}</p>
+              </div>
+            ))}
+          </div>
+          <p className="text-sm text-gray-500 mt-4">FY and Detailed report prices vary by turnover: up to Rs 1 Cr, Rs 1-5 Cr, and above Rs 5 Cr.</p>
+        </div>
       </div>
     </section>
   );

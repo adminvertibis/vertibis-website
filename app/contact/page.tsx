@@ -81,7 +81,7 @@ export default function ContactPage() {
                     <span className="font-medium text-gray-900">1 business day</span>
                   </div>
                   <div className="flex justify-between">
-                    <span>Pro plan support</span>
+                    <span>Partner plan support</span>
                     <span className="font-medium text-gray-900">&lt; 4 hours</span>
                   </div>
                   <div className="flex justify-between">

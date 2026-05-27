@@ -28,17 +28,17 @@ export default function Hero() {
             </h1>
 
             <p className="text-lg text-gray-600 leading-relaxed mb-8 max-w-lg">
-              Vertibis gives Chartered Accountants instant, data-driven health scores for their MSME clients — with AI-powered advisory, GSTN integration, and actionable analytics. All in minutes, not days.
+              Vertibis gives CAs and consultants data-driven MSME health scores, client consent workflows, AI advisory, and income opportunity intelligence. All in minutes, not days.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 mb-10">
               <a
-                href="https://vertibis-frontend.vercel.app"
+                href="https://vertibis-frontend.vercel.app/register"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 bg-[#0066cc] text-white font-semibold px-6 py-3.5 rounded-xl hover:bg-[#0052a3] transition-all shadow-lg shadow-[#0066cc]/25 hover:shadow-xl hover:shadow-[#0066cc]/30 hover:-translate-y-0.5"
               >
-                Start for Free
+                Register as Partner
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
@@ -67,7 +67,7 @@ export default function Hero() {
                 <svg className="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
                 </svg>
-                50 free reports/year
+                Free starter credits
               </div>
               <div className="flex items-center gap-1.5">
                 <svg className="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
@@ -93,10 +93,10 @@ export default function Hero() {
 
               <div className="space-y-3 mb-6">
                 {[
-                  { label: 'Financial Health', score: 82, color: 'bg-green-500' },
-                  { label: 'Compliance Score', score: 91, color: 'bg-[#0066cc]' },
-                  { label: 'Growth Index', score: 65, color: 'bg-amber-500' },
-                  { label: 'Credit Worthiness', score: 74, color: 'bg-[#0066cc]' },
+                  { label: 'GST Integrity', score: 82, color: 'bg-green-500' },
+                  { label: 'ITR Consistency', score: 76, color: 'bg-[#0066cc]' },
+                  { label: 'Cashflow Health', score: 65, color: 'bg-amber-500' },
+                  { label: 'Compliance Behaviour', score: 74, color: 'bg-[#0066cc]' },
                 ].map((item) => (
                   <div key={item.label}>
                     <div className="flex justify-between text-xs text-gray-500 mb-1">
@@ -121,14 +121,14 @@ export default function Hero() {
 
             {/* Floating badges */}
             <div className="absolute -top-4 -right-4 bg-white rounded-xl shadow-lg border border-gray-100 px-3 py-2 flex items-center gap-2">
-              <span className="text-green-500 text-lg">↑</span>
+              <span className="text-green-500 text-lg">+</span>
               <div>
                 <p className="text-xs font-bold text-gray-900">+12 pts</p>
                 <p className="text-xs text-gray-500">This month</p>
               </div>
             </div>
             <div className="absolute -bottom-4 -left-4 bg-white rounded-xl shadow-lg border border-gray-100 px-3 py-2 flex items-center gap-2">
-              <span className="text-[#0066cc] text-lg">⚡</span>
+              <span className="text-[#0066cc] text-lg">V</span>
               <div>
                 <p className="text-xs font-bold text-gray-900">2.4 min</p>
                 <p className="text-xs text-gray-500">Avg. report time</p>

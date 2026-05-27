@@ -35,13 +35,13 @@ export default function DemoPage() {
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 bg-white text-[#0066cc] font-semibold px-8 py-4 rounded-xl hover:bg-blue-50 transition-all shadow-xl text-lg"
             >
-              Launch App — It's Free
+              Register as Partner
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
               </svg>
             </a>
           </div>
-          <p className="text-blue-200 text-sm mt-4">50 free reports/year · No credit card · Setup in 2 minutes</p>
+          <p className="text-blue-200 text-sm mt-4">Partner onboarding · Starter credits · Setup in minutes</p>
         </div>
       </section>
 
@@ -115,7 +115,7 @@ export default function DemoPage() {
             Ready to score your first MSME?
           </h2>
           <p className="text-blue-100 mb-8">
-            Start with 50 free reports. No credit card. No commitments.
+            Start with partner onboarding and starter credits for your first MSME reports.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <a
@@ -124,7 +124,7 @@ export default function DemoPage() {
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center bg-white text-[#0066cc] font-semibold px-8 py-3.5 rounded-xl hover:bg-blue-50 transition-all"
             >
-              Get Started Free
+              View Pricing
             </a>
             <Link
               href="/pricing"

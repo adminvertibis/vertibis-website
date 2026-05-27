@@ -5,35 +5,35 @@ import { useState } from 'react';
 const faqs = [
   {
     q: 'What is Vertibis and who is it for?',
-    a: 'Vertibis is a business health scoring platform designed for Chartered Accountants who serve MSME clients in India. It automates financial analysis, generates health scores across key dimensions, and provides AI-powered advisory — helping CAs deliver more value in less time.',
+    a: 'Vertibis is a business health scoring and partner intelligence platform for CAs, CS, CWAs, advocates, tax consultants, and other advisors serving MSMEs in India.',
   },
   {
     q: 'How does the health score work?',
-    a: 'The health score is a 0–100 composite score built from 40+ parameters across four dimensions: Financial Health (revenue, profitability, liquidity), Compliance Score (GST filings, tax returns), Growth Index (turnover trends, market trajectory), and Credit Worthiness (repayment patterns, leverage ratios). Each dimension is weighted and combined into an overall score.',
+    a: 'The V2 score is a 0-100 composite across five components: GST Integrity, ITR Consistency, Cashflow Health, Compliance Behaviour, and Data Credibility. The same base score can later support NBFC lending and enterprise vendor-screening indices.',
   },
   {
     q: 'What data sources does Vertibis use?',
-    a: 'Vertibis integrates with GSTN (GST Network) for GST compliance and turnover data, Income Tax portal for ITR history, and MCA for company filings. Enterprise plans also support custom data source integrations via API.',
+    a: 'Vertibis uses GST, income tax, and banking data. GST GSP/API integration is planned, with manual uploads available as the current fallback flow.',
   },
   {
-    q: 'Is my client data secure?',
-    a: 'Yes. All data is encrypted at rest and in transit using AES-256 and TLS 1.3 respectively. We are SOC 2 compliant and follow RBI data localisation guidelines. Your client data is never shared with third parties or used to train our models.',
+    q: 'Is client consent required?',
+    a: 'Yes. Client consent is required before Vertibis processes GST, income tax, or banking documents. The platform supports consent requests by email.',
   },
   {
-    q: 'How many reports can I generate on the Free plan?',
-    a: 'The Free plan includes 50 health score reports per year — sufficient for small CA practices. Reports reset annually. If you need more, the Pro plan offers unlimited reports for ₹3,999/year.',
+    q: 'How are partner plans and report credits priced?',
+    a: 'The partner dashboard starts at Rs 3,999/year for up to 50 clients, Rs 7,999/year for up to 200 clients, and Rs 12,999/year for Enterprise. Report credits are purchased separately; initially one credit equals one report.',
   },
   {
-    q: 'Can I white-label the PDF reports with my CA firm\'s branding?',
-    a: 'Yes, white-labelled PDF reports are available on the Enterprise plan. Pro plan users get custom branded reports with their firm name and logo included.',
+    q: 'What report types are available?',
+    a: 'Quick reports are Rs 499. FY reports are Rs 999, Rs 1,999, or Rs 2,999 by turnover band. Detailed reports are Rs 1,499, Rs 2,499, or Rs 3,499 by turnover band.',
   },
   {
-    q: 'Is there an API available for integration with my existing software?',
-    a: 'Yes, REST API access is available on the Enterprise plan. You can integrate Vertibis scoring into your existing practice management or accounting software. We also provide webhooks for real-time notifications.',
+    q: 'Can I white-label the PDF reports with my firm branding?',
+    a: 'Yes. Reports can be co-branded, and white-label options are planned for higher partner tiers and enterprise use cases.',
   },
   {
-    q: 'What kind of support do you offer?',
-    a: 'Free plan users get email support. Pro plan includes priority support with a 4-hour response SLA. Enterprise customers get a dedicated account manager and 1-hour SLA support with a direct phone line.',
+    q: 'Is there an API for NBFC or enterprise integrations?',
+    a: 'API-based scoring is part of the Vertibis roadmap for NBFC credit verification and enterprise vendor onboarding or credit-term workflows.',
   },
 ];
 

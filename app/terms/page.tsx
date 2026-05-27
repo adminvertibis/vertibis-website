@@ -54,7 +54,7 @@ export default function TermsPage() {
         <section>
           <h2 className="text-lg font-bold text-gray-900 mb-3">6. Subscription & Payment</h2>
           <p className="mb-3">
-            Free plan users have access to 50 reports per year at no charge. Paid plans are billed annually in advance. All prices are in Indian Rupees (INR) and exclude applicable GST.
+            Partner dashboard plans are billed annually. Report credits are purchased separately; initially one credit equals one generated report. All prices are in Indian Rupees (INR) and exclude applicable GST.
           </p>
           <p>
             Subscriptions auto-renew unless cancelled at least 7 days before the renewal date. Refunds are available within 14 days of payment if you have generated fewer than 5 reports in the billing period.

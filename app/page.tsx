@@ -8,9 +8,9 @@ import FAQ from './components/FAQ';
 import CTA from './components/CTA';
 
 export const metadata: Metadata = {
-  title: 'Vertibis – MSME Business Health Scoring for CAs',
+  title: 'Vertibis - MSME Business Health Scoring for Partners',
   description:
-    'Instant MSME health scores, AI advisory, and GSTN integration for Chartered Accountants. Start free with 50 reports/year.',
+    'MSME health scores, AI advisory, client consent, and partner intelligence for CAs and consultants.',
 };
 
 export default function HomePage() {
