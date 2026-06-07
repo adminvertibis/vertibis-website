@@ -1,3 +1,5 @@
+import { PARTNER_REGISTER_URL } from '../config';
+
 const steps = [
   {
     step: '01',
@@ -83,7 +85,7 @@ export default function HowItWorks() {
 
         <div className="mt-16 text-center">
           <a
-            href="https://vertibis-frontend.vercel.app"
+            href={PARTNER_REGISTER_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 bg-[#0066cc] text-white font-semibold px-8 py-3.5 rounded-xl hover:bg-[#0052a3] transition-all shadow-lg shadow-[#0066cc]/25"

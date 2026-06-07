@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { PARTNER_REGISTER_URL } from '../config';
 
 const partnerPlans = [
   {
@@ -16,7 +17,7 @@ const partnerPlans = [
       'Co-branded client reports',
     ],
     cta: 'Register as Partner',
-    href: 'https://vertibis-frontend.vercel.app/register',
+    href: PARTNER_REGISTER_URL,
   },
   {
     name: 'Firm Pack',
@@ -34,7 +35,7 @@ const partnerPlans = [
       'Priority partner support',
     ],
     cta: 'Start Firm Pack',
-    href: 'https://vertibis-frontend.vercel.app/register',
+    href: PARTNER_REGISTER_URL,
   },
   {
     name: 'Enterprise Pack',

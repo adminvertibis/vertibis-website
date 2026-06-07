@@ -1,3 +1,5 @@
+import { PARTNER_REGISTER_URL } from '../config';
+
 export default function CTA() {
   return (
     <section className="py-24 bg-gradient-to-br from-[#0066cc] to-[#0052a3]">
@@ -10,7 +12,7 @@ export default function CTA() {
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <a
-            href="https://vertibis-frontend.vercel.app"
+            href={PARTNER_REGISTER_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center gap-2 bg-white text-[#0066cc] font-semibold px-8 py-3.5 rounded-xl hover:bg-blue-50 transition-all shadow-lg"

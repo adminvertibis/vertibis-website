@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import ContactForm from '../components/ContactForm';
+import { PARTNER_PORTAL_URL } from '../config';
 
 export const metadata: Metadata = {
   title: 'Contact Us',
@@ -95,7 +96,7 @@ export default function ContactPage() {
                 <h3 className="font-bold text-gray-900 mb-2">Quick access</h3>
                 <div className="space-y-2">
                   <a
-                    href="https://vertibis-frontend.vercel.app"
+                    href={PARTNER_PORTAL_URL}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center justify-between text-sm text-[#0066cc] hover:underline font-medium"

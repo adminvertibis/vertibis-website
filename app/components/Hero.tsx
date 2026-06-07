@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import { PARTNER_PORTAL_URL, PARTNER_REGISTER_URL } from '../config';
 
 export default function Hero() {
   return (
@@ -33,7 +33,7 @@ export default function Hero() {
 
             <div className="flex flex-col sm:flex-row gap-4 mb-10">
               <a
-                href="https://vertibis-frontend.vercel.app/register"
+                href={PARTNER_REGISTER_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 bg-[#0066cc] text-white font-semibold px-6 py-3.5 rounded-xl hover:bg-[#0052a3] transition-all shadow-lg shadow-[#0066cc]/25 hover:shadow-xl hover:shadow-[#0066cc]/30 hover:-translate-y-0.5"
@@ -44,7 +44,7 @@ export default function Hero() {
                 </svg>
               </a>
               <a
-                href="https://vertibis-frontend.vercel.app"
+                href={PARTNER_PORTAL_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 border-2 border-gray-200 text-gray-700 font-semibold px-6 py-3.5 rounded-xl hover:border-[#0066cc] hover:text-[#0066cc] transition-all"

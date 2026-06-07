@@ -6,6 +6,7 @@ type FormState = 'idle' | 'submitting' | 'success' | 'error';
 
 export default function ContactForm() {
   const [state, setState] = useState<FormState>('idle');
+  const [error, setError] = useState('');
   const [form, setForm] = useState({
     name: '',
     email: '',
@@ -23,8 +24,19 @@ export default function ContactForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setState('submitting');
-    // Backend integration pending — simulate for now
-    await new Promise((r) => setTimeout(r, 1200));
+    setError('');
+    const response = await fetch('/api/leads', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ ...form, type: 'contact' }),
+    });
+
+    if (!response.ok) {
+      const body = await response.json().catch(() => null);
+      setError(String(body?.message || 'Unable to send the message right now.'));
+      setState('error');
+      return;
+    }
     setState('success');
   };
 
@@ -149,6 +161,11 @@ export default function ContactForm() {
           'Send Message'
         )}
       </button>
+      {state === 'error' && error && (
+        <p className="text-sm text-red-600" role="alert">
+          {error}
+        </p>
+      )}
     </form>
   );
 }

@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
+import { PARTNER_PORTAL_URL, PARTNER_REGISTER_URL } from '../config';
 
 const navLinks = [
   { href: '/features', label: 'Features' },
@@ -40,7 +41,7 @@ export default function Navbar() {
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center gap-3">
             <a
-              href="https://vertibis-frontend.vercel.app/register"
+              href={PARTNER_PORTAL_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="text-sm font-medium text-[#0066cc] hover:text-[#0052a3] transition-colors"
@@ -48,7 +49,7 @@ export default function Navbar() {
               Sign In
             </a>
             <a
-              href="https://vertibis-frontend.vercel.app"
+              href={PARTNER_REGISTER_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="text-sm font-semibold bg-[#0066cc] text-white px-4 py-2 rounded-lg hover:bg-[#0052a3] transition-colors"
@@ -90,7 +91,7 @@ export default function Navbar() {
             ))}
             <div className="pt-3 space-y-2 border-t border-gray-100">
               <a
-                href="https://vertibis-frontend.vercel.app/register"
+                href={PARTNER_PORTAL_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block px-3 py-2 text-sm font-medium text-[#0066cc]"
@@ -98,7 +99,7 @@ export default function Navbar() {
                 Sign In
               </a>
               <a
-                href="https://vertibis-frontend.vercel.app"
+                href={PARTNER_REGISTER_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block mx-3 text-center py-2 text-sm font-semibold bg-[#0066cc] text-white rounded-lg hover:bg-[#0052a3]"

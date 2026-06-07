@@ -2,15 +2,32 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { PARTNER_REGISTER_URL } from '../config';
 
 export default function DemoPage() {
   const [email, setEmail] = useState('');
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState('');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Email capture — backend integration pending
-    await new Promise((r) => setTimeout(r, 800));
+    setSubmitting(true);
+    setError('');
+
+    const response = await fetch('/api/leads', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, type: 'demo_subscribe', subject: 'Product updates subscription' }),
+    });
+
+    setSubmitting(false);
+    if (!response.ok) {
+      const body = await response.json().catch(() => null);
+      setError(String(body?.message || 'Unable to subscribe right now.'));
+      return;
+    }
+
     setSubmitted(true);
   };
 
@@ -30,7 +47,7 @@ export default function DemoPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="https://vertibis-frontend.vercel.app"
+              href={PARTNER_REGISTER_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 bg-white text-[#0066cc] font-semibold px-8 py-4 rounded-xl hover:bg-blue-50 transition-all shadow-xl text-lg"
@@ -74,11 +91,17 @@ export default function DemoPage() {
               />
               <button
                 type="submit"
+                disabled={submitting}
                 className="bg-[#0066cc] text-white font-semibold px-6 py-3 rounded-xl hover:bg-[#0052a3] transition-colors text-sm"
               >
-                Subscribe
+                {submitting ? 'Subscribing...' : 'Subscribe'}
               </button>
             </form>
+          )}
+          {error && (
+            <p className="mt-3 text-sm text-red-600" role="alert">
+              {error}
+            </p>
           )}
         </div>
       </section>
@@ -119,12 +142,12 @@ export default function DemoPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <a
-              href="https://vertibis-frontend.vercel.app"
+              href={PARTNER_REGISTER_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center bg-white text-[#0066cc] font-semibold px-8 py-3.5 rounded-xl hover:bg-blue-50 transition-all"
             >
-              View Pricing
+              Register as Partner
             </a>
             <Link
               href="/pricing"
