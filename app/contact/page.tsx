@@ -1,119 +1,89 @@
-import type { Metadata } from 'next';
-import ContactForm from '../components/ContactForm';
+import type { Metadata } from "next";
+import LeadForm from "../components/site/LeadForm";
+import SectionHeader from "../components/site/SectionHeader";
+import { getCmsData } from "../lib/cms-store";
+
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: 'Contact Us',
+  title: "Contact Vertibis",
   description:
-    'Get in touch with the Vertibis team. Request a demo, ask about pricing, or enquire about enterprise and API access.',
+    "Contact Vertibis for CA partner pilots, MSME Health Reports, lender, enterprise, insurance and strategic partner enquiries.",
 };
 
-export default function ContactPage() {
+function formIdFromType(type?: string | string[]) {
+  const value = Array.isArray(type) ? type[0] : type;
+
+  switch (value) {
+    case "ca-partner":
+      return "ca-partner";
+    case "msme-pilot":
+      return "msme-pilot";
+    case "lender":
+      return "lender-interest";
+    case "enterprise":
+      return "enterprise-interest";
+    case "insurance":
+      return "insurance-interest";
+    case "institutional":
+      return "lender-interest";
+    default:
+      return "general-contact";
+  }
+}
+
+export default async function ContactPage({
+  searchParams,
+}: {
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
+}) {
+  const [cms, params] = await Promise.all([getCmsData(), searchParams]);
+  const defaultFormId = formIdFromType(params.type);
+
   return (
     <>
-      <section className="bg-gradient-to-br from-[#e6f0fa] via-white to-white py-20 lg:py-24">
-        <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <span className="inline-block text-[#0066cc] text-sm font-semibold uppercase tracking-wider mb-4">Contact Us</span>
-          <h1 className="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-4">
-            Let's talk
-          </h1>
-          <p className="text-lg text-gray-600">
-            Whether you have a question, want a demo, or need enterprise pricing — we'd love to hear from you.
-          </p>
+      <section className="bg-[#f7fbff] py-20 lg:py-28">
+        <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+          <SectionHeader
+            eyebrow="Contact us"
+            title="Talk to Vertibis about the right pilot pathway."
+            description="Select your role and tell us what you want to evaluate. Enquiries are stored for admin review and export."
+          />
         </div>
       </section>
 
-      <section className="py-16 bg-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-5 gap-12">
-            {/* Contact info */}
-            <div className="lg:col-span-2 space-y-8">
-              <div>
-                <h2 className="text-xl font-bold text-gray-900 mb-6">Get in touch</h2>
-                <div className="space-y-5">
-                  {[
-                    {
-                      icon: (
-                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                        </svg>
-                      ),
-                      label: 'Email',
-                      value: 'hello@vertibis.com',
-                    },
-                    {
-                      icon: (
-                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                        </svg>
-                      ),
-                      label: 'Phone',
-                      value: '+91 98765 43210',
-                    },
-                    {
-                      icon: (
-                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                        </svg>
-                      ),
-                      label: 'Office',
-                      value: 'BKC, Mumbai 400051, India',
-                    },
-                  ].map((item) => (
-                    <div key={item.label} className="flex items-start gap-3">
-                      <div className="w-10 h-10 rounded-xl bg-[#e6f0fa] text-[#0066cc] flex items-center justify-center flex-shrink-0">
-                        {item.icon}
-                      </div>
-                      <div>
-                        <p className="text-xs text-gray-500 font-medium mb-0.5">{item.label}</p>
-                        <p className="text-sm text-gray-800 font-medium">{item.value}</p>
-                      </div>
-                    </div>
+      <section className="bg-white py-20">
+        <div className="mx-auto grid w-full max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-[0.85fr_1.15fr] lg:px-8">
+          <aside className="space-y-5">
+            <div className="rounded-[1.5rem] border border-[#dbe7f4] bg-[#071527] p-7 text-white">
+              <h2 className="text-2xl font-black tracking-[-0.04em]">Vertibis Technologies Pvt Ltd</h2>
+              <p className="mt-4 text-sm leading-7 text-blue-100">{cms.settings.footerCopy}</p>
+              <div className="mt-6 grid gap-3 text-sm">
+                <a className="font-bold text-white hover:text-[#65d6c8]" href={`mailto:${cms.settings.contactEmail}`}>
+                  {cms.settings.contactEmail}
+                </a>
+                <span className="text-blue-100">Registered location: {cms.settings.registeredLocation}</span>
+              </div>
+            </div>
+
+            <div className="rounded-[1.5rem] border border-[#dbe7f4] bg-[#f7fbff] p-7">
+              <h2 className="text-xl font-black tracking-[-0.03em] text-[#071527]">
+                Lead categories
+              </h2>
+              <div className="mt-5 grid gap-3 text-sm font-semibold text-[#33435b]">
+                {cms.leadForms
+                  .filter((form) => form.active)
+                  .map((form) => (
+                    <span key={form.id} className="rounded-2xl bg-white px-4 py-3">
+                      {form.name}
+                    </span>
                   ))}
-                </div>
-              </div>
-
-              <div className="bg-[#e6f0fa] rounded-2xl p-6">
-                <h3 className="font-bold text-gray-900 mb-2">Response times</h3>
-                <div className="space-y-2 text-sm text-gray-600">
-                  <div className="flex justify-between">
-                    <span>General enquiries</span>
-                    <span className="font-medium text-gray-900">1 business day</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Pro plan support</span>
-                    <span className="font-medium text-gray-900">&lt; 4 hours</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Enterprise support</span>
-                    <span className="font-medium text-gray-900">&lt; 1 hour</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-white rounded-2xl border border-gray-100 p-6">
-                <h3 className="font-bold text-gray-900 mb-2">Quick access</h3>
-                <div className="space-y-2">
-                  <a
-                    href="https://vertibis-frontend.vercel.app"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-between text-sm text-[#0066cc] hover:underline font-medium"
-                  >
-                    Launch App
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                    </svg>
-                  </a>
-                </div>
               </div>
             </div>
+          </aside>
 
-            {/* Form */}
-            <div className="lg:col-span-3 bg-white rounded-2xl border border-gray-100 shadow-sm p-8">
-              <h2 className="text-xl font-bold text-gray-900 mb-6">Send us a message</h2>
-              <ContactForm />
-            </div>
+          <div className="rounded-[1.5rem] border border-[#dbe7f4] bg-white p-6 shadow-xl shadow-slate-900/8 sm:p-8">
+            <LeadForm forms={cms.leadForms} defaultFormId={defaultFormId} sourcePage="/contact" />
           </div>
         </div>
       </section>

@@ -1,114 +1,96 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import { useState } from 'react';
+import Link from "next/link";
+import { useState } from "react";
+import type { NavigationItem, SiteSettings } from "@/app/lib/cms-types";
+import ButtonLink from "./site/ButtonLink";
 
-const navLinks = [
-  { href: '/features', label: 'Features' },
-  { href: '/pricing', label: 'Pricing' },
-  { href: '/about', label: 'About' },
-  { href: '/blog', label: 'Blog' },
-  { href: '/contact', label: 'Contact' },
-];
-
-export default function Navbar() {
+export default function Navbar({
+  navigation,
+  settings,
+}: {
+  navigation: NavigationItem[];
+  settings: SiteSettings;
+}) {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const headerLinks = navigation.filter((item) => item.showInHeader);
 
   return (
-    <header className="sticky top-0 z-50 bg-white border-b border-gray-100 shadow-sm">
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 font-bold text-xl text-[#0066cc]">
-            <span className="w-8 h-8 rounded-lg bg-[#0066cc] text-white flex items-center justify-center text-sm font-bold">V</span>
-            Vertibis
-          </Link>
+    <header className="sticky top-0 z-50 border-b border-[#dbe7f4] bg-white/92 backdrop-blur-xl">
+      {settings.announcementBanner ? (
+        <div className="border-b border-[#dbe7f4] bg-[#071527] px-4 py-2 text-center text-xs font-bold text-white sm:text-sm">
+          {settings.announcementBanner}
+        </div>
+      ) : null}
 
-          {/* Desktop nav */}
-          <div className="hidden md:flex items-center gap-6">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-sm font-medium text-gray-600 hover:text-[#0066cc] transition-colors"
-              >
-                {link.label}
-              </Link>
-            ))}
-          </div>
+      <nav className="mx-auto flex min-h-20 w-full max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
+        <Link href="/" className="flex shrink-0 items-center gap-3" onClick={() => setMobileOpen(false)}>
+          <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-[#0066cc] text-base font-black text-white shadow-lg shadow-blue-900/20">
+            V
+          </span>
+          <span>
+            <span className="block text-base font-black tracking-[0.08em] text-[#071527]">
+              VERTIBIS
+            </span>
+            <span className="hidden text-[11px] font-bold uppercase tracking-[0.14em] text-[#607089] xl:block">
+              Technologies Pvt Ltd
+            </span>
+          </span>
+        </Link>
 
-          {/* Desktop CTA */}
-          <div className="hidden md:flex items-center gap-3">
-            <a
-              href="https://vertibis-frontend.vercel.app"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm font-medium text-[#0066cc] hover:text-[#0052a3] transition-colors"
+        <div className="hidden items-center gap-4 lg:flex">
+          {headerLinks.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className="whitespace-nowrap text-sm font-bold text-[#33435b] transition hover:text-[#0066cc]"
             >
-              Sign In
-            </a>
-            <a
-              href="https://vertibis-frontend.vercel.app"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm font-semibold bg-[#0066cc] text-white px-4 py-2 rounded-lg hover:bg-[#0052a3] transition-colors"
-            >
-              Get Started Free
-            </a>
-          </div>
-
-          {/* Mobile menu button */}
-          <button
-            className="md:hidden p-2 rounded-md text-gray-600 hover:text-[#0066cc] hover:bg-gray-50"
-            onClick={() => setMobileOpen(!mobileOpen)}
-            aria-label="Toggle menu"
-          >
-            {mobileOpen ? (
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            ) : (
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            )}
-          </button>
+              {item.label}
+            </Link>
+          ))}
         </div>
 
-        {/* Mobile menu */}
-        {mobileOpen && (
-          <div className="md:hidden border-t border-gray-100 py-4 space-y-1">
-            {navLinks.map((link) => (
+        <div className="hidden items-center gap-2 md:flex">
+          <ButtonLink cta={{ label: "Login / Sign In", href: settings.loginUrl, variant: "ghost" }} />
+          <ButtonLink cta={{ label: "Join Pilot", href: settings.partnerJoinUrl, variant: "primary" }} />
+        </div>
+
+        <button
+          type="button"
+          className="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-[#dbe7f4] text-[#071527] lg:hidden"
+          aria-label="Toggle navigation menu"
+          aria-expanded={mobileOpen}
+          onClick={() => setMobileOpen((value) => !value)}
+        >
+          <span className="sr-only">Menu</span>
+          <span className="flex flex-col gap-1.5">
+            <span className="block h-0.5 w-5 rounded-full bg-current" />
+            <span className="block h-0.5 w-5 rounded-full bg-current" />
+            <span className="block h-0.5 w-5 rounded-full bg-current" />
+          </span>
+        </button>
+      </nav>
+
+      {mobileOpen ? (
+        <div className="border-t border-[#dbe7f4] bg-white px-4 py-4 shadow-xl shadow-slate-900/8 lg:hidden">
+          <div className="mx-auto grid max-w-7xl gap-1">
+            {headerLinks.map((item) => (
               <Link
-                key={link.href}
-                href={link.href}
-                className="block px-3 py-2 text-sm font-medium text-gray-600 hover:text-[#0066cc] hover:bg-gray-50 rounded-md"
+                key={item.href}
+                href={item.href}
+                className="rounded-2xl px-4 py-3 text-sm font-bold text-[#33435b] hover:bg-[#f1f7ff] hover:text-[#0066cc]"
                 onClick={() => setMobileOpen(false)}
               >
-                {link.label}
+                {item.label}
               </Link>
             ))}
-            <div className="pt-3 space-y-2 border-t border-gray-100">
-              <a
-                href="https://vertibis-frontend.vercel.app"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block px-3 py-2 text-sm font-medium text-[#0066cc]"
-              >
-                Sign In
-              </a>
-              <a
-                href="https://vertibis-frontend.vercel.app"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block mx-3 text-center py-2 text-sm font-semibold bg-[#0066cc] text-white rounded-lg hover:bg-[#0052a3]"
-              >
-                Get Started Free
-              </a>
+            <div className="mt-3 grid gap-2 border-t border-[#dbe7f4] pt-4 sm:grid-cols-2">
+              <ButtonLink cta={{ label: "Login / Sign In", href: settings.loginUrl, variant: "secondary" }} />
+              <ButtonLink cta={{ label: "Join Pilot", href: settings.partnerJoinUrl, variant: "primary" }} />
             </div>
           </div>
-        )}
-      </nav>
+        </div>
+      ) : null}
     </header>
   );
 }

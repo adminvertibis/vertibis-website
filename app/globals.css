@@ -3,27 +3,45 @@
 @theme {
   --color-primary: #0066cc;
   --color-primary-dark: #0052a3;
-  --color-primary-light: #3385d6;
-  --color-primary-50: #e6f0fa;
-  --color-primary-100: #cce0f5;
-  --color-primary-200: #99c2eb;
-  --color-primary-900: #00326b;
-
+  --color-navy: #071527;
+  --color-teal: #13b8a6;
+  --color-purple: #7c3aed;
   --font-sans: var(--font-geist-sans), system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), monospace;
 }
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #071527;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
+  margin: 0;
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans);
 }
 
-html {
-  scroll-behavior: smooth;
+::selection {
+  background: #c7e2ff;
+  color: #071527;
+}
+
+.surface-grid {
+  background-image:
+    linear-gradient(rgba(0, 102, 204, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 102, 204, 0.08) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+.card-shadow {
+  box-shadow: 0 24px 70px rgba(7, 21, 39, 0.1);
 }

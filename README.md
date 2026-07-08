@@ -1,36 +1,102 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Vertibis Website
 
-## Getting Started
+Next.js marketing website for Vertibis Technologies Pvt Ltd.
 
-First, run the development server:
+## Current Positioning
+
+Vertibis is building an explainable MSME Business Health Intelligence ecosystem for:
+
+- CAs, CSs and tax consultants
+- MSMEs
+- Banks, NBFCs and fintechs
+- Enterprises and vendor-risk teams
+- Insurance companies
+- Strategic platform partners
+
+Public copy must remain careful:
+
+- Vertibis is a Registered ASP with TaxPro GSTP.
+- GST API integration is currently in testing / pilot stage.
+- Do not claim live production GST data pull unless enabled and verified.
+- Do not publish fake traction numbers or testimonials.
+- Outputs are indicative and require professional review.
+
+## Routes
+
+- `/`
+- `/for-cas`
+- `/for-msmes`
+- `/for-lenders`
+- `/for-enterprises`
+- `/for-insurance`
+- `/pricing`
+- `/resources`
+- `/resources/[slug]`
+- `/about`
+- `/contact`
+- `/login`
+- `/admin`
+- `/privacy`
+- `/terms`
+
+Legacy routes:
+
+- `/features` redirects to `/#modules`
+- `/demo` redirects to `/contact?type=ca-partner`
+- `/blog` redirects to `/resources`
+- `/blog/[slug]` redirects to `/resources/[slug]`
+
+## Admin CMS
+
+Admin route: `/admin`
+
+Set these environment variables before production:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+ADMIN_EMAIL=admin@vertibis.com
+ADMIN_PASSWORD=replace-with-a-long-random-password
+ADMIN_SESSION_SECRET=replace-with-a-long-random-secret
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Editable sections:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Website settings
+- Navigation
+- Stats
+- Homepage
+- Audience pages
+- Product modules
+- Pricing plans
+- Report pricing
+- Lead forms
+- Resources
+- FAQs
+- Testimonials
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Lead submissions are stored through `/api/leads` and visible/exportable at `/admin`.
 
-## Learn More
+## Storage Note
 
-To learn more about Next.js, take a look at the following resources:
+This repository currently has no durable database configured. The CMS and lead APIs use a file-backed development store under `data/`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+That works for local development and server environments with writable persistent disk. On Vercel, file writes are not durable. Before relying on admin edits or lead storage in production, connect a persistent backend such as Postgres, Supabase, Neon, Vercel Postgres, or another approved data store and update `app/lib/cms-store.ts`.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Development
 
-## Deploy on Vercel
+```bash
+npm install
+npm run dev
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Verification
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm run lint
+npm run build
+```
+
+## Backup
+
+A pre-redesign source backup was created at:
+
+`backups/vertibis-old-website-20260708-202531.zip`

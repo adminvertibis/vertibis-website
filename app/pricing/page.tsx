@@ -1,75 +1,121 @@
-import type { Metadata } from 'next';
-import PricingSection from '../components/PricingSection';
-import FAQ from '../components/FAQ';
-import CTA from '../components/CTA';
+import type { Metadata } from "next";
+import ButtonLink from "../components/site/ButtonLink";
+import SectionHeader from "../components/site/SectionHeader";
+import StagePill from "../components/site/StagePill";
+import { getCmsData } from "../lib/cms-store";
+
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: 'Pricing',
+  title: "Pilot Pricing",
   description:
-    'Simple, transparent pricing for Vertibis. Free plan with 50 reports/year, Pro at ₹3,999/year, and Enterprise with custom pricing.',
+    "Pilot-stage pricing for Vertibis CA Partner Plans, MSME Health Reports, loan-readiness add-ons and institutional pilots.",
 };
 
-export default function PricingPage() {
+export default async function PricingPage() {
+  const cms = await getCmsData();
+  const plans = cms.pricingPlans.sort((a, b) => a.displayOrder - b.displayOrder);
+  const reportPrices = cms.reportPricing.sort((a, b) => a.displayOrder - b.displayOrder);
+
   return (
     <>
-      <section className="bg-gradient-to-br from-[#e6f0fa] via-white to-white py-20 lg:py-28">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <span className="inline-block text-[#0066cc] text-sm font-semibold uppercase tracking-wider mb-4">Pricing</span>
-          <h1 className="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-6">
-            Start free, grow with your practice
-          </h1>
-          <p className="text-lg text-gray-600 leading-relaxed">
-            No complicated tiers. No hidden fees. Choose the plan that fits your practice size and upgrade when you need more.
-          </p>
+      <section className="bg-[#f7fbff] py-20 lg:py-28">
+        <div className="mx-auto w-full max-w-7xl px-4 text-center sm:px-6 lg:px-8">
+          <SectionHeader
+            eyebrow="Pilot pricing"
+            title="Pricing that supports CA partners first, then the wider ecosystem."
+            description="Pricing is admin-editable and marked as pilot-stage while Vertibis moves from testing to production readiness."
+            align="center"
+          />
         </div>
       </section>
 
-      <PricingSection />
-
-      {/* Feature comparison */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-extrabold text-gray-900 text-center mb-10">Full feature comparison</h2>
-          <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-x-auto">
-            <table className="w-full text-sm min-w-[600px]">
-              <thead>
-                <tr className="border-b border-gray-100">
-                  <th className="text-left px-6 py-4 font-semibold text-gray-600 w-1/2">Feature</th>
-                  <th className="text-center px-4 py-4 font-semibold text-gray-600">Free</th>
-                  <th className="text-center px-4 py-4 font-bold text-[#0066cc] bg-[#e6f0fa]">Pro</th>
-                  <th className="text-center px-4 py-4 font-semibold text-gray-600">Enterprise</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-gray-50">
-                {[
-                  ['Health Score Reports', '50/year', 'Unlimited', 'Unlimited'],
-                  ['GSTN Data Integration', '✓', '✓', '✓'],
-                  ['PDF Report Export', '✓', '✓', '✓'],
-                  ['AI Advisory', '—', '✓', '✓'],
-                  ['Advanced Analytics', '—', '✓', '✓'],
-                  ['Industry Benchmarking', '—', '✓', '✓'],
-                  ['Trend Tracking & Alerts', '—', '✓', '✓'],
-                  ['Branded Reports', '—', 'Logo & Name', 'Full White-label'],
-                  ['Team Members', '1', '3', 'Unlimited'],
-                  ['Support', 'Email', 'Priority (4hr)', 'Dedicated (1hr)'],
-                  ['API Access', '—', '—', '✓'],
-                  ['SSO / Enterprise Security', '—', '—', '✓'],
-                ].map(([feature, free, pro, enterprise]) => (
-                  <tr key={feature} className="hover:bg-gray-50/50">
-                    <td className="px-6 py-3.5 text-gray-700 font-medium">{feature}</td>
-                    <td className="px-4 py-3.5 text-center text-gray-500">{free}</td>
-                    <td className="px-4 py-3.5 text-center text-[#0066cc] font-medium bg-[#e6f0fa]/30">{pro}</td>
-                    <td className="px-4 py-3.5 text-center text-gray-600">{enterprise}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+      <section className="bg-white py-20">
+        <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+          <SectionHeader
+            eyebrow="CA Partner Plans"
+            title="Start with partner access and report credits."
+            description="Plans are designed for early CA, CS, CWA, advocate and tax-consultant partners."
+          />
+          <div className="mt-10 grid gap-5 lg:grid-cols-4">
+            {plans.map((plan) => (
+              <article
+                key={plan.name}
+                className={`flex min-h-[490px] flex-col justify-between rounded-[1.5rem] border p-6 shadow-sm ${
+                  plan.highlighted
+                    ? "border-[#0066cc] bg-[#f7fbff] shadow-xl shadow-blue-900/10"
+                    : "border-[#dbe7f4] bg-white"
+                }`}
+              >
+                <div>
+                  <div className="flex items-start justify-between gap-3">
+                    <h2 className="text-2xl font-black tracking-[-0.04em] text-[#071527]">
+                      {plan.name}
+                    </h2>
+                    <span className="rounded-full border border-blue-200 bg-blue-50 px-2.5 py-1 text-[11px] font-black uppercase tracking-[0.14em] text-blue-700">
+                      {plan.status}
+                    </span>
+                  </div>
+                  <p className="mt-4 text-4xl font-black tracking-[-0.06em] text-[#071527]">
+                    {plan.price}
+                  </p>
+                  <p className="mt-1 text-sm font-bold text-[#607089]">{plan.billingPeriod}</p>
+                  <p className="mt-5 text-sm leading-7 text-[#607089]">{plan.description}</p>
+                  <ul className="mt-6 space-y-3">
+                    {plan.features.map((feature) => (
+                      <li key={feature} className="flex gap-3 text-sm font-semibold text-[#33435b]">
+                        <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-[#13b8a6]" />
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <ButtonLink cta={plan.cta} className="mt-8 w-full" />
+              </article>
+            ))}
           </div>
         </div>
       </section>
 
-      <FAQ />
-      <CTA />
+      <section id="report-pricing" className="bg-[#f7fbff] py-20">
+        <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+          <SectionHeader
+            eyebrow="Report credits"
+            title="MSME report pricing is separate from partner subscription."
+            description="This gives Vertibis room to support quick snapshots, annual reports, detailed reports and future add-ons."
+          />
+          <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-5">
+            {reportPrices.map((report) => (
+              <article key={report.name} className="rounded-[1.35rem] border border-[#dbe7f4] bg-white p-5 shadow-sm">
+                <div className="flex justify-between gap-3">
+                  <div className="grid h-11 w-11 place-items-center rounded-2xl bg-[#eef6ff] text-sm font-black text-[#0066cc]">
+                    R
+                  </div>
+                  <StagePill stage={report.stage} />
+                </div>
+                <h3 className="mt-5 text-lg font-black tracking-[-0.03em] text-[#071527]">
+                  {report.name}
+                </h3>
+                <p className="mt-3 text-2xl font-black tracking-[-0.04em] text-[#071527]">
+                  {report.price}
+                </p>
+                <p className="mt-3 text-sm leading-6 text-[#607089]">{report.description}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-white py-16">
+        <div className="mx-auto w-full max-w-5xl rounded-[1.5rem] border border-amber-200 bg-amber-50 px-6 py-8 text-amber-900 sm:px-8">
+          <h2 className="text-xl font-black">Pilot-stage pricing disclaimer</h2>
+          <p className="mt-3 text-sm leading-7">
+            Pricing shown is pilot-stage and may change as the product moves from testing to
+            production. Institutional pricing requires a pilot discussion, consent-flow mapping and
+            technical/security review.
+          </p>
+        </div>
+      </section>
     </>
   );
 }

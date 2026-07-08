@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import Navbar from "./components/Navbar";
+import { getCmsData } from "./lib/cms-store";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -16,18 +17,19 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Vertibis – MSME Business Health Scoring Platform",
+    default: "Vertibis | MSME Business Health Intelligence Ecosystem",
     template: "%s | Vertibis",
   },
   description:
-    "Vertibis provides instant MSME business health scores and advisory insights for Chartered Accountants. Save time, strengthen client relationships, and unlock new revenue streams.",
+    "Vertibis is building an explainable MSME Health Intelligence ecosystem for CAs, MSMEs, lenders, insurers and enterprises.",
   keywords: [
     "MSME health score",
-    "business health scoring",
-    "CA advisory platform",
-    "GSTN integration",
-    "MSME analytics India",
-    "chartered accountant tools",
+    "business health intelligence",
+    "CA partner programme",
+    "loan readiness",
+    "vendor health intelligence",
+    "GST API testing",
+    "Registered ASP TaxPro GSTP",
   ],
   metadataBase: new URL("https://vertibis.com"),
   openGraph: {
@@ -35,16 +37,15 @@ export const metadata: Metadata = {
     locale: "en_IN",
     url: "https://vertibis.com",
     siteName: "Vertibis",
-    title: "Vertibis – MSME Business Health Scoring Platform",
+    title: "Vertibis | MSME Business Health Intelligence Ecosystem",
     description:
-      "Instant health scores and advisory insights for Indian MSMEs and their Chartered Accountants.",
-    images: [{ url: "/og-image.png", width: 1200, height: 630 }],
+      "Explainable MSME Health Intelligence for CAs, MSMEs, lenders, insurers and enterprises.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Vertibis – MSME Business Health Scoring Platform",
+    title: "Vertibis | MSME Business Health Intelligence Ecosystem",
     description:
-      "Instant health scores and advisory insights for Indian MSMEs and their Chartered Accountants.",
+      "Explainable MSME Health Intelligence for CAs, MSMEs, lenders, insurers and enterprises.",
   },
   robots: {
     index: true,
@@ -52,20 +53,19 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const cms = await getCmsData();
+
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable}`}
-    >
-      <body className="min-h-screen flex flex-col antialiased">
-        <Navbar />
-        <main className="flex-1">{children}</main>
-        <Footer />
+    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body className="min-h-screen bg-white antialiased">
+        <Navbar navigation={cms.navigation} settings={cms.settings} />
+        <main>{children}</main>
+        <Footer navigation={cms.navigation} settings={cms.settings} />
       </body>
     </html>
   );
