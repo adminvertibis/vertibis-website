@@ -13,6 +13,9 @@ const forbiddenPhrases = [
   "stored for admin review",
   "admin review",
   "admin-editable",
+  "website admin",
+  "open admin",
+  "manage website content",
   "pilot-stage while Vertibis moves",
   "no unsupported production claims",
   "registered ASP status",
@@ -55,6 +58,7 @@ const forbiddenPhrases = [
 const scanTargets = [
   { directory: "app", extensions: [".ts", ".tsx", ".js", ".jsx", ".json"] },
   { directory: "data", extensions: [".json"] },
+  { directory: "public", extensions: [".html", ".json", ".txt"] },
   { directory: path.join(".next", "server", "app"), extensions: [".html", ".rsc", ".js", ".json"] },
 ];
 
@@ -64,6 +68,7 @@ const excludedPathParts = [
   `${path.sep}app${path.sep}components${path.sep}site${path.sep}AdminConsole.tsx`,
   `${path.sep}app${path.sep}lib${path.sep}cms-types.ts`,
   `${path.sep}.next${path.sep}server${path.sep}app${path.sep}admin${path.sep}`,
+  `${path.sep}.next${path.sep}server${path.sep}app${path.sep}admin.`,
   `${path.sep}.next${path.sep}server${path.sep}app${path.sep}api${path.sep}`,
 ];
 

@@ -712,9 +712,9 @@ export const defaultCmsData: CmsData = {
       show: true,
     },
     {
-      question: "Are the public stats verified?",
+      question: "What stage is the Vertibis platform at?",
       answer:
-        "Vertibis currently uses product-stage labels instead of traction numbers unless a metric is verified and approved for publication.",
+        "Vertibis is in pilot-stage development. Product capabilities are labelled as pilot, testing or planned so users can understand their current availability.",
       category: "trust",
       show: true,
     },

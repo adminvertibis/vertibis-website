@@ -73,11 +73,8 @@ export default function Footer({
                   </Link>
                 ))}
                 <a href={settings.loginUrl} target="_blank" rel="noopener noreferrer" className="hover:text-white">
-                  Login
+                  Partner Login
                 </a>
-                <Link href="/admin" className="hover:text-white">
-                  Admin
-                </Link>
               </div>
             </div>
 
