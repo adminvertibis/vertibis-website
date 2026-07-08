@@ -106,7 +106,7 @@ export default function Footer({
         </div>
 
         <div className="mt-8 text-xs text-blue-100">
-          © 2026 {settings.companyName}. All rights reserved.
+          &copy; 2026 {settings.companyName}. All rights reserved.
         </div>
       </div>
     </footer>

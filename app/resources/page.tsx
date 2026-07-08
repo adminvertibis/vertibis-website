@@ -25,7 +25,6 @@ const categories = [
 export default async function ResourcesPage() {
   const cms = await getCmsData();
   const resources = cms.resources.filter((resource) => resource.status === "published");
-  const drafts = cms.resources.filter((resource) => resource.status === "draft");
 
   return (
     <>
@@ -34,7 +33,7 @@ export default async function ResourcesPage() {
           <SectionHeader
             eyebrow="Resources"
             title="Clear writing for a careful MSME intelligence category."
-            description="Resources are CMS-ready. Draft and coming-soon content is labelled internally rather than shown as fake published material."
+            description="Explore practical resources on MSME business health, GST and compliance health, loan readiness, CA practice intelligence, vendor risk and institutional intelligence."
           />
         </div>
       </section>
@@ -67,22 +66,6 @@ export default async function ResourcesPage() {
               </Link>
             ))}
           </div>
-
-          {drafts.length ? (
-            <div className="mt-12 rounded-[1.5rem] border border-amber-200 bg-amber-50 p-6">
-              <h2 className="text-xl font-black text-amber-950">Draft resources in CMS</h2>
-              <div className="mt-4 grid gap-3 md:grid-cols-2">
-                {drafts.map((draft) => (
-                  <div key={draft.slug} className="rounded-2xl bg-white/70 p-4">
-                    <p className="text-sm font-black text-amber-950">{draft.title}</p>
-                    <p className="mt-1 text-xs font-bold uppercase tracking-[0.14em] text-amber-700">
-                      Draft / coming soon
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          ) : null}
         </div>
       </section>
     </>

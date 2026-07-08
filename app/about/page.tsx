@@ -64,7 +64,7 @@ export default async function AboutPage() {
           <SectionHeader
             eyebrow="GST and trust status"
             title="Registered ASP with TaxPro GSTP. GST API testing is in progress."
-            description="The public site now avoids unsupported production claims and uses the same careful wording across the product."
+            description="Vertibis is currently in pilot-stage development. We are a Registered ASP with TaxPro GSTP, and GST API workflows are being tested through the ASP/GSP pathway. Our approach is built around client consent, data minimisation, explainable indicators and professional review."
             tone="light"
           />
           <div className="mt-10 grid gap-5 lg:grid-cols-3">

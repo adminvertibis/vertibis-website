@@ -24,7 +24,7 @@ export default async function PricingPage() {
           <SectionHeader
             eyebrow="Pilot pricing"
             title="Pricing that supports CA partners first, then the wider ecosystem."
-            description="Pricing is admin-editable and marked as pilot-stage while Vertibis moves from testing to production readiness."
+            description="Partner and report pricing is labelled by stage so early partners can understand pilot subscriptions, report credits and institutional discussions."
             align="center"
           />
         </div>

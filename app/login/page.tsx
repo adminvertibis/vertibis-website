@@ -20,24 +20,24 @@ export default async function LoginPage() {
         <SectionHeader
           eyebrow="Login"
           title="Access Vertibis from the right workspace."
-          description="The marketing site stays public. Portal and partner workflows continue through the existing Vertibis frontend while CMS administration lives here."
+          description="Partner workflows continue through the Vertibis partner portal. Website content administration remains separate."
         />
 
         <div className="mt-10 grid gap-5 md:grid-cols-3">
           <article className="rounded-[1.5rem] border border-[#dbe7f4] bg-white p-7 shadow-sm">
-            <h2 className="text-2xl font-black tracking-[-0.04em] text-[#071527]">Portal login</h2>
+            <h2 className="text-2xl font-black tracking-[-0.04em] text-[#071527]">Partner portal</h2>
             <p className="mt-3 text-sm leading-7 text-[#607089]">
-              Continue to the current Vertibis application for product workflows.
+              Open the partner workspace for login, pilot workflows, credits and report generation.
             </p>
-            <ButtonLink cta={{ label: "Open Portal", href: cms.settings.loginUrl, variant: "primary" }} className="mt-7 w-full" />
+            <ButtonLink cta={{ label: "Open Partner Portal", href: cms.settings.loginUrl, variant: "primary" }} className="mt-7 w-full" />
           </article>
 
           <article className="rounded-[1.5rem] border border-[#dbe7f4] bg-white p-7 shadow-sm">
             <h2 className="text-2xl font-black tracking-[-0.04em] text-[#071527]">Partner access</h2>
             <p className="mt-3 text-sm leading-7 text-[#607089]">
-              CA partner pilot workflows, credits and report generation should remain synced with the portal.
+              New CA partners can request access through the pilot pathway before using the partner portal.
             </p>
-            <ButtonLink cta={{ label: "Partner Login", href: cms.settings.partnerJoinUrl, variant: "secondary" }} className="mt-7 w-full" />
+            <ButtonLink cta={{ label: "Join CA Partner Pilot", href: "/contact?type=ca-partner", variant: "secondary" }} className="mt-7 w-full" />
           </article>
 
           <article className="rounded-[1.5rem] border border-[#dbe7f4] bg-white p-7 shadow-sm">

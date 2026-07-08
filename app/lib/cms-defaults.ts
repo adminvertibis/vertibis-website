@@ -1,6 +1,6 @@
 import type { CmsData } from "./cms-types";
 
-const portalUrl = "https://vertibis-frontend.vercel.app";
+const partnerPortalUrl = "https://partner.vertibis.com/login";
 
 export const defaultCmsData: CmsData = {
   settings: {
@@ -10,8 +10,8 @@ export const defaultCmsData: CmsData = {
     contactEmail: "hello@vertibis.com",
     registeredLocation: "India",
     linkedInUrl: "https://www.linkedin.com/company/vertibis",
-    loginUrl: portalUrl,
-    partnerJoinUrl: portalUrl,
+    loginUrl: partnerPortalUrl,
+    partnerJoinUrl: partnerPortalUrl,
     msmEpilotUrl: "/contact?type=msme-pilot",
     institutionalContactUrl: "/contact?type=institutional",
     seoTitle: "Vertibis | MSME Business Health Intelligence Ecosystem",
@@ -44,7 +44,7 @@ export const defaultCmsData: CmsData = {
       isReal: true,
       isDemo: false,
       display: true,
-      sourceNote: "Internal pilot status",
+      sourceNote: "Pilot status",
       lastUpdated: "2026-07-08",
     },
     {
@@ -80,7 +80,7 @@ export const defaultCmsData: CmsData = {
       "CA Partner Pilot Open",
       "MSME Health Reports Coming Soon",
     ],
-    primaryCta: { label: "Join CA Partner Programme", href: portalUrl, variant: "primary" },
+    primaryCta: { label: "Join CA Partner Programme", href: partnerPortalUrl, variant: "primary" },
     secondaryCta: { label: "Explore MSME Health Score", href: "/for-msmes", variant: "secondary" },
     tertiaryCta: {
       label: "Talk to Us for Institutional Use Cases",
@@ -176,7 +176,7 @@ export const defaultCmsData: CmsData = {
       title: "Help clients better. Grow your practice faster.",
       description:
         "Vertibis positions CAs as the trusted distribution and review layer for MSME business-health intelligence.",
-      primaryCta: { label: "Become a Vertibis Partner", href: portalUrl, variant: "primary" },
+      primaryCta: { label: "Become a Vertibis Partner", href: partnerPortalUrl, variant: "primary" },
       secondaryCta: { label: "Talk to Partner Team", href: "/contact?type=ca-partner", variant: "secondary" },
       sections: [
         {
@@ -392,7 +392,7 @@ export const defaultCmsData: CmsData = {
       stage: "pilot",
       icon: "CA",
       displayOrder: 6,
-      relatedCta: { label: "Partner login", href: portalUrl, variant: "secondary" },
+      relatedCta: { label: "Partner login", href: partnerPortalUrl, variant: "secondary" },
       show: true,
     },
     {
@@ -451,7 +451,7 @@ export const defaultCmsData: CmsData = {
         "Co-branded client reports",
       ],
       highlighted: false,
-      cta: { label: "Join Pilot", href: portalUrl, variant: "primary" },
+      cta: { label: "Join Pilot", href: partnerPortalUrl, variant: "primary" },
       status: "pilot",
       displayOrder: 1,
     },
@@ -469,7 +469,7 @@ export const defaultCmsData: CmsData = {
         "Priority partner support",
       ],
       highlighted: true,
-      cta: { label: "Start Firm Pilot", href: portalUrl, variant: "primary" },
+      cta: { label: "Start Firm Pilot", href: partnerPortalUrl, variant: "primary" },
       status: "pilot",
       displayOrder: 2,
     },
@@ -644,18 +644,7 @@ export const defaultCmsData: CmsData = {
       active: true,
     },
   ],
-  testimonials: [
-    {
-      name: "Pilot participant",
-      designation: "CA Partner",
-      organisation: "Demo firm",
-      quote:
-        "This is placeholder testimonial copy for internal review only. It is intentionally hidden from the public website.",
-      permissionReceived: false,
-      isDemo: true,
-      show: false,
-    },
-  ],
+  testimonials: [],
   resources: [
     {
       title: "What is an MSME Business Health Score?",
@@ -663,9 +652,9 @@ export const defaultCmsData: CmsData = {
       category: "MSME Health Score",
       author: "Vertibis Team",
       summary:
-        "A draft explainer on why MSMEs need unified, explainable business-health intelligence.",
+        "An explainer on why MSMEs need unified, explainable business-health intelligence.",
       body:
-        "This draft resource will explain the concept of business-health scoring, its limitations, and how professional review fits into the workflow.",
+        "This resource explains the concept of business-health scoring, its limitations and how professional review fits into the workflow.",
       seoTitle: "What is an MSME Business Health Score? | Vertibis",
       seoDescription: "Learn how an explainable MSME Business Health Score can support owners and advisors.",
       status: "published",
@@ -725,7 +714,7 @@ export const defaultCmsData: CmsData = {
     {
       question: "Are the public stats verified?",
       answer:
-        "Only pilot-stage and product-stage labels are displayed publicly. Demo or placeholder metrics are hidden unless explicitly marked as pilot language.",
+        "Vertibis currently uses product-stage labels instead of traction numbers unless a metric is verified and approved for publication.",
       category: "trust",
       show: true,
     },

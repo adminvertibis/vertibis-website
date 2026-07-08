@@ -100,10 +100,10 @@ export default async function HomePage() {
                     <div className="flex flex-wrap items-start justify-between gap-3">
                       <div>
                         <p className="text-xs font-black uppercase tracking-[0.18em] text-[#0066cc]">
-                          Client report preview
+                          Illustrative report preview
                         </p>
                         <h2 className="mt-2 text-2xl font-black tracking-[-0.04em] text-[#071527]">
-                          Shree Precision Components
+                          Pilot MSME Report View
                         </h2>
                       </div>
                       <StagePill stage="pilot" />
@@ -252,7 +252,7 @@ export default async function HomePage() {
           <SectionHeader
             eyebrow="Technology and trust"
             title="Built on consent, explainability and professional review."
-            description="The public website now says exactly where the product is: registered ASP status, GST API testing, explainable output and no unsupported production claims."
+            description="Vertibis is designed to keep business-health intelligence transparent and responsible. The platform uses consent-backed workflows, data minimisation, product-stage labels and explainable scoring factors so every output can be reviewed before use."
           />
           <div className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {homepage.trustItems.map((item) => (
@@ -269,7 +269,7 @@ export default async function HomePage() {
           <SectionHeader
             eyebrow="Product modules"
             title="Every module carries its stage clearly."
-            description="Admin can edit module names, descriptions, audiences and stage labels so the site stays accurate as Vertibis moves from pilot to production."
+            description="Each module is clearly labelled by stage so partners can distinguish between pilot capabilities, testing workflows and planned roadmap features."
           />
           <div className="mt-10">
             <ProductModuleGrid modules={cms.productModules} />
@@ -282,7 +282,7 @@ export default async function HomePage() {
           <SectionHeader
             eyebrow="Early access"
             title="Join the Vertibis early ecosystem."
-            description="Select the pathway that fits your role. Each lead is stored for admin review and export."
+            description="Select the pathway that best matches your role. We will connect you with the relevant Vertibis pilot or partnership process."
           />
           <div className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
             {homepage.pilotAudiences.map((audience) => (

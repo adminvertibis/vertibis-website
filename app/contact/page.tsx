@@ -47,7 +47,7 @@ export default async function ContactPage({
           <SectionHeader
             eyebrow="Contact us"
             title="Talk to Vertibis about the right pilot pathway."
-            description="Select your role and tell us what you want to evaluate. Enquiries are stored for admin review and export."
+            description="Select the pathway that best matches your role. We will review your enquiry and connect you with the relevant Vertibis pilot or partnership process."
           />
         </div>
       </section>
