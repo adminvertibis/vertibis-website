@@ -1,9 +1,12 @@
 import { promises as fs } from "fs";
+import os from "os";
 import path from "path";
 import { defaultCmsData } from "./cms-defaults";
 import type { CmsData, LeadSubmission } from "./cms-types";
 
-const dataDirectory = path.join(process.cwd(), "data");
+const dataDirectory = process.env.VERCEL
+  ? path.join(os.tmpdir(), "vertibis-data")
+  : path.join(process.cwd(), "data");
 const cmsFilePath = path.join(dataDirectory, "cms.json");
 const leadsFilePath = path.join(dataDirectory, "leads.json");
 const auditFilePath = path.join(dataDirectory, "admin-audit.json");
@@ -13,8 +16,6 @@ async function ensureDataDirectory() {
 }
 
 async function readJsonFile<T>(filePath: string, fallback: T): Promise<T> {
-  await ensureDataDirectory();
-
   try {
     const file = await fs.readFile(filePath, "utf8");
     return JSON.parse(file) as T;
@@ -24,7 +25,6 @@ async function readJsonFile<T>(filePath: string, fallback: T): Promise<T> {
       throw error;
     }
 
-    await fs.writeFile(filePath, JSON.stringify(fallback, null, 2));
     return fallback;
   }
 }
@@ -73,4 +73,3 @@ export async function saveAuditLog(record: Omit<AuditRecord, "id" | "createdAt">
   });
   await writeJsonFile(auditFilePath, logs.slice(0, 500));
 }
-
